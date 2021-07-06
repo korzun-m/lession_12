@@ -10,18 +10,21 @@ services:
       - data2:/usr/local/tomcat/ROOT
   maven:
     build: maven
+    hostname: db
     volumes:
-      - data1:/webapps
-      - data2:/ROOT
+      - data1:/apps/webapps
+      - data2:/apps/root
   db:
-    image: mysql:5.7
+    image: mysql:5.5
     volumes:
       - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: FgbHy54seG
-      MYSQL_DATABASE: base1
-      MYSQL_USER: user1
+      MYSQL_DATABASE: baseapp
+      MYSQL_USER: userapp
       MYSQL_PASSWORD: 7Sde4fGjz2
 volumes:
   data1:
