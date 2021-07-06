@@ -10,12 +10,12 @@ services:
       - data2:/usr/local/tomcat/ROOT
   maven:
     build: maven
-    hostname: db
     volumes:
       - data1:/apps/webapps
       - data2:/apps/root
   db:
     image: mysql:5.5
+    hostname: db
     volumes:
       - db_data:/var/lib/mysql
     ports:
